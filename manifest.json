@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "CardKingdomToCad",
+    "version": "1.0",
+    "description": "Display cardkingdom.com prices as (CAD$) Canadian Dollars.",
+    "icons": {
+        "48": "icons/border-48.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.cardkingdom.com/mtg/*/singles*"],
+            "js": ["usdToCadPurchasing.js"]
+        },
+        {
+            "matches": ["*://*.cardkingdom.com/mtg/*"],
+            "js": ["usdToCadPurchasing.js"]
+        },
+        {
+            "matches": ["*://*.cardkingdom.com/catalog/*"],
+            "js": ["usdToCadPurchasing.js"]
+        }
+    ],
+    "permissions": [
+        "<all_urls>"
+      ]
+}
