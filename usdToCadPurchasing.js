@@ -2,48 +2,46 @@ fetch('https://stonkch.art/api2api/https%3A%2F%2Fquery1.finance.yahoo.com%2Fv10%
     .then(res => res.json())
     .then(data => {
         if (data.quoteSummary.error === null && data.quoteSummary.result[0].price.regularMarketPrice.raw) {
-            function runCode() { ``
+            const renderItems=(selector,offset,type)=> {
+                let item;
+                switch (type) {
+                    case 1:
+                        item = document.querySelector(selector);
+                        if (item && item.textContent.indexOf('$') !== offset && item.textContent.indexOf('$)') === -1 && Number(item.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
+                            item.style.fontSize = '16px';
+                            item.textContent = item.textContent + ` (${(Number(item.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
+                        }
+                        break;
+                    case 2:
+                        item = document.querySelector(selector);
+                        if (item && item.textContent.indexOf('$') === offset && item.textContent.indexOf('$)') === -1 && Number(item.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
+                            item.style.fontSize = '16px';
+                            item.textContent = item.textContent + ` (${(Number(item.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
+                        }
+                        break;
+                    default:
+                }
+                
+            };
+            const runCode=()=> { ``
                 if (document.querySelector('div.col-md-4:nth-child(1)') && document.querySelector(`span.stylePrice:nth-child(4)`)) {
-                    let cardPrice = document.querySelector(`span.stylePrice:nth-child(4)`);
-                    if (cardPrice && cardPrice.textContent.indexOf('$') === 0 && cardPrice.textContent.indexOf('$)') === -1 && Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
-                        cardPrice.style.fontSize = '16px';
-                        cardPrice.textContent = cardPrice.textContent + ` (${(Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
-                    }
+                    renderItems(`span.stylePrice:nth-child(4)`,0,2);
                 } 
                 if (document.querySelector(`li.itemAddToCart:nth-child(4) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`)) {
-                    let cardPrice = document.querySelector(`li.itemAddToCart:nth-child(4) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`);
-                    if (cardPrice && cardPrice.textContent.indexOf('$') !== 0 && cardPrice.textContent.indexOf('$)') === -1 && Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
-                        cardPrice.style.fontSize = '16px';
-                        cardPrice.textContent = cardPrice.textContent + ` (${(Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
-                    }
+                    renderItems(`li.itemAddToCart:nth-child(4) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`,0,1);
                 }
                 if (document.querySelector(`li.itemAddToCart:nth-child(3) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`)) {
-                    let cardPrice = document.querySelector(`li.itemAddToCart:nth-child(3) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`);
-                    if (cardPrice && cardPrice.textContent.indexOf('$') !== 0 && cardPrice.textContent.indexOf('$)') === -1 && Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
-                        cardPrice.style.fontSize = '16px';
-                        cardPrice.textContent = cardPrice.textContent + ` (${(Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
-                    }
+                    renderItems(`li.itemAddToCart:nth-child(3) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`,0,1);
                 }
                 if (document.querySelector(`li.itemAddToCart:nth-child(2) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`)) {
-                    let cardPrice = document.querySelector(`li.itemAddToCart:nth-child(2) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`);
-                    if (cardPrice && cardPrice.textContent.indexOf('$') !== 0 && cardPrice.textContent.indexOf('$)') === -1 && Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
-                        cardPrice.style.fontSize = '16px';
-                        cardPrice.textContent = cardPrice.textContent + ` (${(Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
-                    }
+                    renderItems(`li.itemAddToCart:nth-child(2) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`,0,1);
                 }
                 if (document.querySelector(`li.itemAddToCart:nth-child(1) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`)) {
-                    let cardPrice = document.querySelector(`li.itemAddToCart:nth-child(1) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`);
-                    if (cardPrice && cardPrice.textContent.indexOf('$') !== 0 && cardPrice.textContent.indexOf('$)') === -1 && Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
-                        cardPrice.style.fontSize = '16px';
-                        cardPrice.textContent = cardPrice.textContent + ` (${(Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
-                    }
+                    renderItems(`li.itemAddToCart:nth-child(1) > form:nth-child(1) > div:nth-child(12) > span:nth-child(1)`,0,1);
                 }
                 if (document.querySelector(`li.itemAddToCart:nth-child(1) > form:nth-child(1) > div:nth-child(12) > span:nth-child(4)`)) {
-                    let cardPrice = document.querySelector(`li.itemAddToCart:nth-child(1) > form:nth-child(1) > div:nth-child(12) > span:nth-child(4)`);
-                    if (cardPrice && cardPrice.textContent.indexOf('$') === 1 && cardPrice.textContent.indexOf('$)') === -1 && Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, ""))!== 0) {
-                        cardPrice.style.fontSize = '16px';
-                        cardPrice.textContent = cardPrice.textContent + ` (${(Number(cardPrice.textContent.slice(1).replace(/[^0-9.-]+/g, "")) * Number(data.quoteSummary.result[0].price.regularMarketPrice.raw)).toFixed(2)}$)`;
-                    }
+                    renderItems(`li.itemAddToCart:nth-child(1) > form:nth-child(1) > div:nth-child(12) > span:nth-child(4)`,1,2);
+
                 }
                 if (document.querySelector(`.col-sm-9`) && document.querySelector(`div.productItemWrapper:nth-child(1)`)) {
                     let laTable = document.querySelector(`.col-sm-9`);
@@ -85,7 +83,7 @@ fetch('https://stonkch.art/api2api/https%3A%2F%2Fquery1.finance.yahoo.com%2Fv10%
                         }
                     }
                 }
-            }
+            };
             setInterval(() => {
                 runCode()
             }, 1500);
