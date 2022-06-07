@@ -6,7 +6,7 @@
 
   Firefox Automatic Installation:
 
-  To Come...
+  [https://addons.mozilla.org/firefox/downloads/file/3958418/cardkingdomtocad-1.1.xpi](https://addons.mozilla.org/firefox/downloads/file/3958418/cardkingdomtocad-1.1.xpi)
 
   Firefox Manual Installation:
 
@@ -16,7 +16,7 @@
 
 -Chrome Extension:
 
-  To Come...
+  [https://chrome.google.com/webstore/detail/cardkingdomtocad/flnaiabpcnjlimeopeegdkcpcffkdcce](https://chrome.google.com/webstore/detail/cardkingdomtocad/flnaiabpcnjlimeopeegdkcpcffkdcce)
 
 
    Manual Chrome Installation:
